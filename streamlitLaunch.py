@@ -135,27 +135,20 @@ def main():
             #load the model based on the choice
             #NAIVE BAISE CHOICE
             if model_choice == "NB":
-                #the models i got from guthub
-                #predictor = load_prediction_models("./models_test/newsclassifier_Logit_model.pkl")
-                #my models i made  --------------------------------------------
-                #vect_text = news_cv.transform([news_text]).toarray() #not needing to transform on it anymore after adding transformation to the pkl
-                #predictor = load_prediction_models("base.pkl")
-
-                # predictor = load_prediction_models("final_models/retrain_gs_ct_mnb_np.pkl")
-                # prediction = predictor.predict([news_text])
-
-                with open("final_models/retrain_gs_ct_mnb_np.pkl", 'rb') as handle:
-                    data = handle.read()
+                # #the models i got from guthub
+                # #predictor = load_prediction_models("./models_test/newsclassifier_Logit_model.pkl")
+                # #my models i made  --------------------------------------------
+                # #vect_text = news_cv.transform([news_text]).toarray() #not needing to transform on it anymore after adding transformation to the pkl
+                # #predictor = load_prediction_models("base.pkl")
+                #
+                # # predictor = load_prediction_models("final_models/retrain_gs_ct_mnb_np.pkl")
+                # # prediction = predictor.predict([news_text])
+                #
+                # with open("final_models/retrain_gs_ct_mnb_np.pkl", 'rb') as handle:
+                #     data = handle.read()
   # reconstructing the data as dictionary
-                predictor = pickle.loads(data)
-                predition = predictor.predict([news_text])
-
-
-
-
-
-
-
+                predictor = load_prediction_models("final_models/retrain_gs_ct_mnb_np.pkl")
+                prediction = predictor.predict([news_text])
                 #st.write(prediction) #outputs our prediction number\
             #LOGISITC REGRESSION CHOICE
             elif model_choice == "LR":
@@ -183,7 +176,7 @@ def main():
                 prediction = predictor.predict([news_text])
 
 
-            final_result = get_keys(prediction, prediction_labels  )
+            final_result = get_keys(prediction, prediction_labels)
             st.success("News Categorized: {}".format(final_result))
 
 #-----------------------------------------------------------------------
